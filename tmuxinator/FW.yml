@@ -1,0 +1,33 @@
+# ~/.tmuxinator/FirmwareDev.yml
+
+name: FW-
+root: ~/
+
+windows:
+  - OS: 
+      layout: main-vertical
+      panes:
+        - echo "Main" > /dev/null
+        - echo "Secondary" > /dev/null
+  - TEST:
+      root: ~/rysta/rystaFirmware
+      layout: f771,238x69,0,0[238x58,0,0{80x58,0,0,0,84x58,81,0,5,72x58,166,0,6},238x10,0,59{116x10,0,59,2,121x10,117,59,4}]
+      panes:
+        - vim -p test/prindo/test_prindo.cpp test/prindo/test_PrinterImpl.cpp
+        - vim src/miscApplications/Prindo/PrinterManager.cpp
+        - vim src/miscApplications/Prindo/PrinterManager.h  
+        - make -C ./test
+  - MOCK: 
+      root: ~/rysta/rystaFirmware
+      layout: main-vertical
+      panes:
+        - vim test/mocks_rystaOS/PrinterMock.cpp
+        - vim test/mocks_rystaOS/PrinterMock.h
+  - FW:
+      root: ~/rysta/rystaFirmware
+      layout: eed2,238x69,0,0[238x60,0,0{119x60,0,0,12,118x60,120,0,14},238x8,0,61,13]
+      panes:
+        - vim
+        - vim
+        - echo "cmd" > /dev/null
+
